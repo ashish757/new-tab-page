@@ -3,3 +3,38 @@
   margin: 0;
   padding: 0;
 }
+
+:root {
+  --bg-main: #0f172a;
+  --bg-card: #1e293b;
+  --bg-hover: #334155;
+
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+
+  --border-color: #334155;
+
+  --accent-primary: #3b82f6;
+  --accent-hover: #60a5fa;
+  --status-success: #22c55e;
+  --status-error: #ef4444;
+  --status-warning: #eab308;
+}
+
+[data-theme="light"] {
+  --bg-main: #f1f5f9;
+  --bg-card: #ffffff;
+  --bg-hover: #f8fafc;
+
+  --text-main: #0f172a;
+  --text-muted: #475569;
+
+  --border-color: #e2e8f0;
+
+  --accent-primary: #2563eb;
+  --accent-hover: #1d4ed8;
+
+  --status-success: #16a34a;
+  --status-error: #dc2626;
+  --status-warning: #ca8a04;
+}
