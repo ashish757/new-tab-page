@@ -1,4 +1,4 @@
-import { X, Image as ImageIcon, Layout, Palette } from 'lucide-react';
+import { Image as ImageIcon, Layout, Palette } from 'lucide-react';
 import styles from './settingsSidebar.module.css';
 
 export interface DashboardSettings {
@@ -40,18 +40,11 @@ export default function SettingsSidebar({ isOpen, onClose, settings, onUpdate }:
             {isOpen && <div className={styles.overlay} onClick={onClose} />}
 
             <div className={`${styles.sidebar} ${isOpen ? styles.open : ''}`}>
-                <div className={styles.header}>
-                    <h2>Customization</h2>
-                    <button className={styles.closeBtn} onClick={onClose}>
-                        <X size={24} />
-                    </button>
-                </div>
 
                 <div className={styles.content}>
-                    {/* Card Visibility Section */}
                     <div className={styles.section}>
                         <h3 className={styles.sectionTitle}>
-                            <Layout size={18} /> Visible Cards
+                            <Layout size={18} /> Which Information to Show?
                         </h3>
                         <div className={styles.toggleList}>
                             {Object.entries(settings.cards).map(([key, isVisible]) => (

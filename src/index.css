@@ -20,6 +20,8 @@ body {
   --status-success: #22c55e;
   --status-error: #ef4444;
   --status-warning: #eab308;
+  --shadow-base: rgba(0, 0, 0, 0.2);
+  --shadow-hover: rgba(0, 0, 0, 0.4);
 }
 
 [data-theme="light"] {
@@ -34,4 +36,6 @@ body {
   --status-success: #16a34a;
   --status-error: #dc2626;
   --status-warning: #ca8a04;
+  --shadow-base: rgba(0, 0, 0, 0.05);
+  --shadow-hover: rgba(0, 0, 0, 0.1);
 }

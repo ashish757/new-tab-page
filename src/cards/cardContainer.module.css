@@ -9,7 +9,7 @@
     gap: 12px;
     font-size: 1.4rem;
     font-weight: 700;
-    color: #ffffff;
+    color: var(--text-main); /* Updated to variable */
     margin-bottom: 24px;
 }
 
