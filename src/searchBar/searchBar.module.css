@@ -1,0 +1,70 @@
+.wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.searchBar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 640px;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 999px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    padding: 12px 24px;
+    transition: all 0.3s ease;
+    gap: 16px;
+    color: #64748b;
+}
+
+.searchBar:focus-within {
+    background: rgba(30, 41, 59, 0.8);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 0 4px rgba(255, 255, 255, 0.02);
+    color: #ffffff;
+}
+
+.searchForm {
+    flex: 1;
+    display: flex;
+}
+
+.searchBar input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #f8fafc;
+    font-size: 1.1rem;
+    padding: 4px 0;
+    outline: none;
+}
+
+.searchBar input::placeholder {
+    color: #475569;
+}
+
+.dropdown {
+    display: flex;
+    align-items: center;
+}
+
+.dropdown select {
+    background: transparent;
+    color: #94a3b8;
+    border: none;
+    padding: 8px;
+    outline: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.dropdown select:hover {
+    color: #f8fafc;
+}
