@@ -1,0 +1,71 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto 24px auto;
+    color: var(--text-main);
+    padding: 0 16px;
+}
+
+.dateTime {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.time {
+    text-shadow: 0 0 75px var(--text-shadow);
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -1.5px;
+    color: var(--text-main);
+}
+
+.date {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.weather {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 12px 20px;
+    border-radius: 24px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 8px 32px var(--shadow-base);
+    transition: all 0.3s ease;
+}
+
+.weather:hover {
+    background: var(--bg-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px var(--shadow-hover);
+}
+
+.temp {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.iconSun { color: #fbbf24; }
+.iconCloud { color: #94a3b8; }
+.iconRain { color: #60a5fa; }
+
+.spinner {
+    animation: spin 1s linear infinite;
+    color: var(--text-muted);
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
