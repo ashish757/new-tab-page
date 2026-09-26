@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Pencil } from 'lucide-react';
+import DateTimeWeather from './DateTimeWeather.tsx';
 import SearchBar from './searchBar/SearchBar';
 import CodeforcesCard from './cards/CodeforcesCard';
 import GithubCard from './cards/GithubCard';
@@ -38,15 +39,27 @@ export default function App() {
 
     return (
         <div className={styles.appContainer} style={backgroundStyle}>
-            <div className={styles.searchSection}>
-                <SearchBar />
-            </div>
+            <div className={styles.layoutWrapper}>
 
-            <div className={styles.grid}>
-                {settings.cards.codeforces && <CodeforcesCard id="cf-1" defaultHandle="Abnormality" />}
-                {settings.cards.github && <GithubCard id="gh-1" defaultHandle="ashish757" />}
-                {settings.cards.shortcuts && <ShortcutsCard />}
-                {settings.cards.todo && <TodoCard id="todo-1" />}
+                {settings.cards.todo && (
+                    <div className={styles.sidebarWrapper}>
+                        <TodoCard id="todo-1" />
+                    </div>
+                )}
+
+                <div className={styles.mainContent}>
+                    <DateTimeWeather />
+
+                    <div className={styles.searchSection}>
+                        <SearchBar />
+                    </div>
+
+                    <div className={styles.grid}>
+                        {settings.cards.codeforces && <CodeforcesCard id="cf-1" defaultHandle="Abnormality" />}
+                        {settings.cards.github && <GithubCard id="gh-1" defaultHandle="ashish757" />}
+                        {settings.cards.shortcuts && <ShortcutsCard />}
+                    </div>
+                </div>
             </div>
 
             <button

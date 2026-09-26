@@ -18,7 +18,6 @@
 }
 
 .card:hover {
-    transform: translateY(-4px);
     background: var(--bg-hover);
     border-color: var(--border-color);
     box-shadow: 0 20px 40px var(--shadow-hover);
@@ -126,6 +125,9 @@
     border-color: var(--border-color);
     box-shadow: 0 20px 40px var(--shadow-hover), 0 0 40px var(--border-color);
 }
+.todoCard {
+    height: 100%;
+}
 
 .todoCard .iconWrapper { color: #818cf8; }
 .todoCard .rank { color: #818cf8; }
@@ -133,7 +135,6 @@
     border-color: rgba(129, 140, 248, 0.3);
     box-shadow: 0 20px 40px var(--shadow-hover), 0 0 40px rgba(129, 140, 248, 0.1);
 }
-
 .modalOverlay {
     position: fixed;
     top: 0;
@@ -284,7 +285,7 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-    max-height: 220px;
+    flex: 1;
     overflow-y: auto;
     padding-right: 4px;
 }

@@ -4,10 +4,32 @@
     padding: 60px 24px;
     box-sizing: border-box;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
     position: relative;
     background-color: #050505;
+}
+
+.layoutWrapper {
+    display: flex;
+    gap: 32px;
+    width: 100%;
+    max-width: 1400px;
+    align-items: flex-start;
+}
+
+.mainContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebarWrapper {
+    width: 350px;
+    flex-shrink: 0;
+    height: calc(100vh - 120px);
+    position: sticky;
+    top: 60px;
 }
 
 .searchSection {
@@ -25,7 +47,6 @@
     justify-content: center;
     align-items: flex-start;
     width: 100%;
-    max-width: 1200px;
 }
 
 .editButton {

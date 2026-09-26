@@ -22,6 +22,7 @@ body {
   --status-warning: #eab308;
   --shadow-base: rgba(0, 0, 0, 0.2);
   --shadow-hover: rgba(0, 0, 0, 0.4);
+  --text-shadow: #ffffff;
 }
 
 [data-theme="light"] {
@@ -38,4 +39,5 @@ body {
   --status-warning: #ca8a04;
   --shadow-base: rgba(0, 0, 0, 0.05);
   --shadow-hover: rgba(0, 0, 0, 0.1);
+  --text-shadow: #bdbdbd;
 }
