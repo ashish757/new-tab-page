@@ -1,0 +1,61 @@
+.appContainer {
+    min-height: 100vh;
+    width: 100%;
+    padding: 60px 24px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    background-color: #050505;
+}
+
+.searchSection {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 60px auto;
+    display: flex;
+    justify-content: center;
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.editButton {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: #94a3b8;
+    width: 56px;
+    height: 56px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    z-index: 900;
+}
+
+.editButton:hover {
+    background: rgba(30, 41, 59, 0.8);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+.editButton:active {
+    transform: scale(0.95);
+}
