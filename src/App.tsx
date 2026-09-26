@@ -10,9 +10,9 @@ import SettingsSidebar, { type DashboardSettings } from './cards/SettingsSidebar
 import styles from './app.module.css';
 
 const DEFAULT_SETTINGS: DashboardSettings = {
-    bgType: 'color',
+    bgType: 'image',
     bgValue: '#0f172a',
-    theme: 'dark',
+    theme: 'light',
     cards: {
         codeforces: true,
         github: true,
