@@ -6,20 +6,16 @@ export default function DateTimeWeather() {
     const [time, setTime] = useState(new Date());
     const [weather, setWeather] = useState<{ temp: number; code: number } | null>(null);
     const [loading, setLoading] = useState(true);
+    const [geoError, setGeoError] = useState(false);
 
-    // Update time every second
     useEffect(() => {
         const timer = setInterval(() => setTime(new Date()), 1000);
         return () => clearInterval(timer);
     }, []);
 
-    // Fetch weather data
     useEffect(() => {
-        const fetchWeather = async () => {
+        const fetchWeather = async (lat: number, lon: number) => {
             try {
-                // Coordinates set to Gurugram, Haryana
-                const lat = 28.4595;
-                const lon = 77.0266;
                 const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`);
                 const data = await res.json();
 
@@ -29,18 +25,32 @@ export default function DateTimeWeather() {
                 });
             } catch (error) {
                 console.error("Failed to fetch weather", error);
+                setGeoError(true);
             } finally {
                 setLoading(false);
             }
         };
 
-        fetchWeather();
+        if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    fetchWeather(position.coords.latitude, position.coords.longitude);
+                },
+                (error) => {
+                    console.warn("Geolocation denied or failed:", error);
+                    setGeoError(true);
+                    setLoading(false);
+                }
+            );
+        } else {
+            setGeoError(true);
+            setLoading(false);
+        }
     }, []);
 
     const formattedTime = time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     const formattedDate = time.toLocaleDateString([], { weekday: 'long', month: 'long', day: 'numeric' });
 
-    // WMO Weather interpretation codes
     const getWeatherIcon = (code: number) => {
         if (code === 0 || code === 1) return <Sun size={28} className={styles.iconSun} />;
         if (code >= 50 && code <= 69) return <CloudRain size={28} className={styles.iconRain} />;
@@ -57,6 +67,8 @@ export default function DateTimeWeather() {
             <div className={styles.weather}>
                 {loading ? (
                     <Loader2 size={24} className={styles.spinner} />
+                ) : geoError ? (
+                    <span className={styles.temp} title="Location access denied">--°C</span>
                 ) : weather ? (
                     <>
                         {getWeatherIcon(weather.code)}
