@@ -1,17 +1,27 @@
 .card {
     position: relative;
-    border-radius: 12px;
+    border-radius: 24px;
     padding: 24px;
     display: flex;
     flex-direction: column;
     color: #ffffff;
-    flex: 1;
-    min-width: 260px;
-    max-width: 320px;
-    background: linear-gradient(160deg, #132722 0%, #0b111a 100%);
-    border: 1px solid rgba(16, 185, 129, 0.15);
-    box-shadow: inset 0 0 60px rgba(16, 185, 129, 0.03);
-    transition: transform 0.2s, box-shadow 0.2s;
+    flex: 1 1 300px;
+    min-width: 300px;
+    max-width: 350px;
+    margin: 0 auto;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    background: rgba(30, 41, 59, 0.7);
+    border-color: rgba(16, 185, 129, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 40px rgba(16, 185, 129, 0.1);
 }
 
 .settingsBtn {
@@ -48,7 +58,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #10b981; /* Emerald green */
+    color: #10b981;
 }
 
 .title {
@@ -58,7 +68,6 @@
     letter-spacing: 0.5px;
 }
 
-/* Shortcuts Layout */
 .shortcutsGrid {
     display: flex;
     flex-direction: column;
@@ -70,10 +79,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgba(15, 23, 42, 0.4);
+    background-color: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.05);
     padding: 12px 16px;
-    border-radius: 8px;
+    border-radius: 12px;
     text-decoration: none;
     color: #cbd5e1;
     transition: all 0.2s;
@@ -105,7 +114,6 @@
     padding: 20px 0;
 }
 
-/* Modal Overlay & Card */
 .modalOverlay {
     position: fixed;
     top: 0;
@@ -123,7 +131,7 @@
 .modal {
     background-color: #0f172a;
     padding: 24px;
-    border-radius: 12px;
+    border-radius: 16px;
     width: 90%;
     max-width: 400px;
     border: 1px solid #334155;
@@ -157,7 +165,6 @@
     color: #ef4444;
 }
 
-/* Manage List within Modal */
 .manageList {
     display: flex;
     flex-direction: column;
@@ -173,7 +180,7 @@
     align-items: center;
     background-color: #1e293b;
     padding: 10px 12px;
-    border-radius: 8px;
+    border-radius: 12px;
     border: 1px solid #334155;
 }
 
@@ -221,7 +228,6 @@
     margin: 20px 0;
 }
 
-/* Add Form */
 .formTitle {
     margin: 0 0 12px 0;
     font-size: 1rem;
@@ -241,7 +247,7 @@
 
 .input {
     padding: 10px 12px;
-    border-radius: 8px;
+    border-radius: 12px;
     border: 1px solid #334155;
     background-color: #1e293b;
     color: #f8fafc;
@@ -259,17 +265,22 @@
     justify-content: center;
     gap: 8px;
     width: 100%;
-    padding: 10px;
-    background-color: #10b981;
+    padding: 12px;
+    background-color: rgba(255, 255, 255, 0.05);
     color: #ffffff;
-    border: none;
-    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
     cursor: pointer;
     font-weight: 600;
     margin-top: 4px;
-    transition: background-color 0.2s;
+    transition: all 0.2s ease;
 }
 
 .submitBtn:hover {
-    background-color: #059669;
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.submitBtn:active {
+    transform: scale(0.96);
 }
