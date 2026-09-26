@@ -225,3 +225,143 @@
 }
 .github .iconWrapper { color: #f0f6fc; }
 .github .rank { color: #f0f6fc; }
+
+.todoCard {
+    background: linear-gradient(160deg, #1e1b4b 0%, #0b111a 100%);
+    border-color: rgba(99, 102, 241, 0.15);
+    box-shadow: inset 0 0 60px rgba(99, 102, 241, 0.03);
+}
+
+.todoCard .iconWrapper { color: #818cf8; }
+.todoCard .rank { color: #818cf8; }
+
+.todoForm {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.todoInput {
+    flex: 1;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #334155;
+    background-color: rgba(15, 23, 42, 0.4);
+    color: #f8fafc;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.todoInput:focus {
+    border-color: #818cf8;
+}
+
+.todoAddBtn {
+    background-color: #6366f1;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.todoAddBtn:disabled {
+    background-color: #334155;
+    color: #64748b;
+    cursor: not-allowed;
+}
+
+.todoAddBtn:not(:disabled):hover {
+    background-color: #4f46e5;
+}
+
+.todoList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 220px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.todoList::-webkit-scrollbar {
+    width: 4px;
+}
+.todoList::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 4px;
+}
+
+.todoItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: rgba(15, 23, 42, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 10px 12px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.todoItem.completed {
+    opacity: 0.5;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.checkBtn {
+    background: transparent;
+    border: none;
+    color: #64748b;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.todoItem.completed .checkBtn {
+    color: #10b981;
+}
+
+.todoText {
+    flex: 1;
+    font-size: 0.9rem;
+    color: #e2e8f0;
+    transition: all 0.3s;
+}
+
+.todoItem.completed .todoText {
+    text-decoration: line-through;
+    color: #64748b;
+}
+
+.deleteTodoBtn {
+    background: transparent;
+    border: none;
+    color: #64748b;
+    cursor: pointer;
+    padding: 4px;
+    opacity: 0;
+    transition: all 0.2s;
+}
+
+.todoItem:hover .deleteTodoBtn {
+    opacity: 1;
+}
+
+.deleteTodoBtn:hover {
+    color: #ef4444;
+}
+
+.emptyState {
+    color: #64748b;
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 20px 0;
+}
