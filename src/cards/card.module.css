@@ -1,15 +1,28 @@
 .card {
     position: relative;
-    border-radius: 12px;
+    border-radius: 24px;
     padding: 24px;
     display: flex;
     flex-direction: column;
     color: #ffffff;
-    flex: 1;
-    min-width: 260px;
-    max-width: 320px;
-    border: 1px solid transparent;
-    transition: transform 0.2s, box-shadow 0.2s;
+    flex: 1 1 300px;
+    min-width: 300px;
+    max-width: 350px;
+    margin: 0 auto;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    font-family: "JetBrains Mono";
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    background: rgba(30, 41, 59, 0.7);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
 .settingsBtn {
@@ -101,30 +114,26 @@
     font-weight: 500;
 }
 
-.codeforces {
-    background: linear-gradient(160deg, #101d2d 0%, #0b111a 100%);
-    border-color: rgba(56, 189, 248, 0.15);
-    box-shadow: inset 0 0 60px rgba(56, 189, 248, 0.03);
-}
 .codeforces .iconWrapper { color: #38bdf8; }
 .codeforces .rank { color: #38bdf8; }
-
-.codechef {
-    background: linear-gradient(160deg, #1e1332 0%, #0b111a 100%);
-    border-color: rgba(168, 85, 247, 0.15);
-    box-shadow: inset 0 0 60px rgba(168, 85, 247, 0.03);
+.codeforces:hover {
+    border-color: rgba(56, 189, 248, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 40px rgba(56, 189, 248, 0.1);
 }
-.codechef .iconWrapper { color: #c084fc; }
-.codechef .rank { color: #c084fc; }
 
-.leetcode {
-    background: linear-gradient(160deg, #241d17 0%, #0b111a 100%);
-    border-color: rgba(234, 179, 8, 0.15);
-    box-shadow: inset 0 0 60px rgba(234, 179, 8, 0.03);
+.github .iconWrapper { color: #f0f6fc; }
+.github .rank { color: #f0f6fc; }
+.github:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 40px rgba(255, 255, 255, 0.05);
 }
-.leetcode .iconWrapper { color: #facc15; }
-.leetcode .rank { color: #facc15; }
 
+.todoCard .iconWrapper { color: #818cf8; }
+.todoCard .rank { color: #818cf8; }
+.todoCard:hover {
+    border-color: rgba(129, 140, 248, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 40px rgba(129, 140, 248, 0.1);
+}
 
 .modalOverlay {
     position: fixed;
@@ -204,36 +213,24 @@
 .submitBtn {
     width: 100%;
     padding: 12px;
-    background-color: #3b82f6;
+    background-color: rgba(255, 255, 255, 0.05);
     color: #ffffff;
-    border: none;
-    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
     cursor: pointer;
     font-weight: 600;
     margin-top: 10px;
-    transition: background-color 0.2s;
+    transition: all 0.2s ease;
 }
 
 .submitBtn:hover {
-    background-color: #2563eb;
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
-.github {
-    background: linear-gradient(160deg, #1e2329 0%, #0b111a 100%);
-    border-color: rgba(240, 246, 252, 0.15);
-    box-shadow: inset 0 0 60px rgba(240, 246, 252, 0.03);
+.submitBtn:active {
+    transform: scale(0.96);
 }
-.github .iconWrapper { color: #f0f6fc; }
-.github .rank { color: #f0f6fc; }
-
-.todoCard {
-    background: linear-gradient(160deg, #1e1b4b 0%, #0b111a 100%);
-    border-color: rgba(99, 102, 241, 0.15);
-    box-shadow: inset 0 0 60px rgba(99, 102, 241, 0.03);
-}
-
-.todoCard .iconWrapper { color: #818cf8; }
-.todoCard .rank { color: #818cf8; }
 
 .todoForm {
     display: flex;
@@ -244,9 +241,9 @@
 .todoInput {
     flex: 1;
     padding: 10px 12px;
-    border-radius: 8px;
-    border: 1px solid #334155;
-    background-color: rgba(15, 23, 42, 0.4);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.05);
     color: #f8fafc;
     font-size: 0.9rem;
     outline: none;
@@ -258,26 +255,30 @@
 }
 
 .todoAddBtn {
-    background-color: #6366f1;
-    color: white;
-    border: none;
-    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: #f8fafc;
     width: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: all 0.2s ease;
 }
 
 .todoAddBtn:disabled {
-    background-color: #334155;
-    color: #64748b;
+    opacity: 0.5;
     cursor: not-allowed;
 }
 
 .todoAddBtn:not(:disabled):hover {
-    background-color: #4f46e5;
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.todoAddBtn:active {
+    transform: scale(0.96);
 }
 
 .todoList {
@@ -293,7 +294,7 @@
     width: 4px;
 }
 .todoList::-webkit-scrollbar-thumb {
-    background: #334155;
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 4px;
 }
 
@@ -301,10 +302,10 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    background-color: rgba(15, 23, 42, 0.4);
+    background-color: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.05);
     padding: 10px 12px;
-    border-radius: 8px;
+    border-radius: 12px;
     transition: all 0.3s ease;
 }
 
