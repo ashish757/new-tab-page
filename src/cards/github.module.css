@@ -11,22 +11,6 @@
     color: var(--text-main);
 }
 
-.ratingWrapper {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-}
-
-.currentRating {
-    font-size: 2.5rem;
-    font-weight: 700;
-    line-height: 1;
-}
-
-.currentLabel {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-}
 
 .stats {
     display: flex;

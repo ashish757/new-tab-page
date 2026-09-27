@@ -110,14 +110,6 @@ body {
   letter-spacing: 0.5px;
 }
 
-.mainInfo {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  margin-bottom: 24px;
-}
-
-
 
 
 

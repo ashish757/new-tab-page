@@ -20,8 +20,26 @@ export default function CodeforcesCard({ id, defaultHandle }: Props) {
         currentRating: '-',
         maxRating: '-',
         problemsSolved: '-',
-        lastActive: '-'
+        lastActive: '-',
+        nextRank: '-',
+        width: 0
     });
+
+
+    const ranks = [
+        {id: 1, rank: 'Newbie', start: 0},
+        {id: 2, rank: 'Pupil', start: 1200},
+        {id: 3, rank: 'Specialist', start: 1400},
+        {id: 4, rank: 'expert', start: 1600},
+        {id: 5, rank: 'Candidate Master', start: 1900},
+        {id: 6, rank: 'Master', start: 2100},
+        {id: 7, rank: 'International Master', start: 2300},
+        {id: 8, rank: 'Grandmaster', start: 2400},
+        {id: 9, rank: 'International Grandmaster', start: 2600},
+        {id: 10, rank: 'Legendary Grandmaster', start: 3000},
+        {id: 11, rank: 'Tourist', start: 4000},
+    ]
+
 
     const fetchStats = async (currentHandle: string) => {
         if (!currentHandle) return;
@@ -60,7 +78,15 @@ export default function CodeforcesCard({ id, defaultHandle }: Props) {
             console.error("Failed to fetch Codeforces stats", e);
         }
 
-        setStats(newStats);
+
+        const nextRankIdx = ranks.findIndex(rank => rank.start > Number(newStats.currentRating));
+
+        const nextRank = ranks[nextRankIdx].rank;
+        const diff = ranks[nextRankIdx].start - Number(newStats.currentRating);
+        const range = ranks[nextRankIdx].start - ranks[nextRankIdx-1].start;
+
+        setStats({...newStats, nextRank, width: diff*100/range});
+
         setLoading(false);
     };
 
@@ -74,6 +100,8 @@ export default function CodeforcesCard({ id, defaultHandle }: Props) {
         localStorage.setItem(`${id}-handle`, tempHandle);
         setIsModalOpen(false);
     };
+
+
 
     return (
             <div className={`card ${styles.codeforces}`}>
@@ -93,12 +121,25 @@ export default function CodeforcesCard({ id, defaultHandle }: Props) {
                 </div>
 
                 <div className={"mainInfo"}>
-                    <span className={styles.rank}>{loading ? '...' : stats.rank}</span>
 
-                    <div className={styles.ratingWrapper}>
+                    <div className={"ratingWrapper"}>
+                        <span className={styles.rank}>{loading ? '...' : stats.rank}</span>
+                        <div>
+                            <span className={"currentRating"}>{loading ? '...' : stats.currentRating}</span>
+                            <span className={"currentLabel"}>Current</span>
+                        </div>
 
-                        <span className={styles.currentRating}>{loading ? '...' : stats.currentRating}</span>
-                        <span className={styles.currentLabel}>Current</span>
+                    </div>
+                    <div className={"nextRankWrapper"}>
+                        <div className={styles.nextRank}>
+                            <span>next </span>
+                            <span>{stats.nextRank}</span>
+                        </div>
+                        <div className={styles.progressBar}>
+                            <div className={styles.progress} style={{width: `${stats.width}%`}}></div>
+                        </div>
+
+
                     </div>
                 </div>
 

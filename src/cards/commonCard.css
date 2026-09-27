@@ -1,5 +1,39 @@
 
 
+.mainInfo {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 24px;
+    justify-content: space-between;
+
+    .ratingWrapper {
+        display: flex;
+        flex-direction: column;
+        gap: .4rem;
+    }
+
+    .currentRating {
+        font-size: 2.5rem;
+        font-weight: 700;
+        line-height: 1;
+    }
+
+
+    .currentLabel {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+    }
+    .nextRankWrapper{
+        display: flex;
+        flex-direction: column;
+        gap: .7rem;
+    }
+
+
+}
+
+
+
 .stats {
     display: flex;
     gap: 1rem;

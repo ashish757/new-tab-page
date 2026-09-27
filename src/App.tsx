@@ -12,7 +12,7 @@ import styles from './app.module.css';
 const DEFAULT_SETTINGS: DashboardSettings = {
     bgType: 'image',
     bgValue: '#0f172a',
-    theme: 'light',
+    theme: 'dark',
     cards: {
         codeforces: true,
         github: true,
