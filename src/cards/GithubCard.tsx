@@ -70,8 +70,6 @@ export default function GithubCard({ id, defaultHandle }: Props) {
 
                     const events = await eventsRes.json();
 
-                    console.log(events);
-
                     const lastPush = events.find((e: any) => e.type === 'PushEvent');
                     if (lastPush) {
                         newStats.latestRepo = lastPush.repo.name.split('/').pop();

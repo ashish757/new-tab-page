@@ -26,27 +26,25 @@ export default function CodeforcesCard({ id, defaultHandle }: Props) {
         diff: 0
     });
 
-
     const ranks = [
-        {id: 1, rank: 'Newbie', start: 0},
-        {id: 2, rank: 'Pupil', start: 1200},
-        {id: 3, rank: 'Specialist', start: 1400},
-        {id: 4, rank: 'expert', start: 1600},
-        {id: 5, rank: 'Candidate Master', start: 1900},
-        {id: 6, rank: 'Master', start: 2100},
-        {id: 7, rank: 'International Master', start: 2300},
-        {id: 8, rank: 'Grandmaster', start: 2400},
-        {id: 9, rank: 'International Grandmaster', start: 2600},
-        {id: 10, rank: 'Legendary Grandmaster', start: 3000},
-        {id: 11, rank: 'Tourist', start: 4000},
-    ]
-
+        { id: 1, rank: 'Newbie', start: 0 },
+        { id: 2, rank: 'Pupil', start: 1200 },
+        { id: 3, rank: 'Specialist', start: 1400 },
+        { id: 4, rank: 'Expert', start: 1600 },
+        { id: 5, rank: 'Candidate Master', start: 1900 },
+        { id: 6, rank: 'Master', start: 2100 },
+        { id: 7, rank: 'International Master', start: 2300 },
+        { id: 8, rank: 'Grandmaster', start: 2400 },
+        { id: 9, rank: 'International Grandmaster', start: 2600 },
+        { id: 10, rank: 'Legendary Grandmaster', start: 3000 },
+        { id: 11, rank: 'Tourist', start: 4000 },
+    ];
 
     const fetchStats = async (currentHandle: string) => {
         if (!currentHandle) return;
         setLoading(true);
 
-        const newStats = { rank: '-', currentRating: '-', maxRating: '-', problemsSolved: '-', lastActive: '-', diff: 0 };
+        const newStats = { rank: '-', currentRating: '-', maxRating: '-', problemsSolved: '-', lastActive: '-' };
 
         try {
             const infoReq = await fetch(`https://codeforces.com/api/user.info?handles=${currentHandle}`);
@@ -79,17 +77,33 @@ export default function CodeforcesCard({ id, defaultHandle }: Props) {
             console.error("Failed to fetch Codeforces stats", e);
         }
 
+        let nextRank = '...';
+        let diff = 0;
+        let width = 0;
 
-        const nextRankIdx = ranks.findIndex(rank => rank.start > Number(newStats.currentRating));
+        const currRatingNum = Number(newStats.currentRating);
 
-        const nextRank = ranks[nextRankIdx].rank;
-        const diff = ranks[nextRankIdx].start - Number(newStats.currentRating);
-        const range = ranks[nextRankIdx].start - ranks[nextRankIdx-1].start;
+        if (!isNaN(currRatingNum)) {
+            const nextRankIdx = ranks.findIndex(rank => rank.start > currRatingNum);
 
-        newStats.diff = diff;
+            if (nextRankIdx === -1) {
+                nextRank = 'Max Rank';
+                diff = 0;
+                width = 100;
+            } else if (nextRankIdx === 0) {
+                nextRank = ranks[0].rank;
+                diff = ranks[0].start - currRatingNum;
+                width = 0;
+            } else {
+                nextRank = ranks[nextRankIdx].rank;
+                diff = ranks[nextRankIdx].start - currRatingNum;
+                const range = ranks[nextRankIdx].start - ranks[nextRankIdx - 1].start;
+                const pointsEarned = currRatingNum - ranks[nextRankIdx - 1].start;
+                width = (pointsEarned / range) * 100;
+            }
+        }
 
-        setStats({...newStats, nextRank, width: diff*100/range});
-
+        setStats({ ...newStats, nextRank, width, diff });
         setLoading(false);
     };
 
@@ -104,96 +118,88 @@ export default function CodeforcesCard({ id, defaultHandle }: Props) {
         setIsModalOpen(false);
     };
 
-
-
     return (
-            <div className={`card ${styles.codeforces}`}>
-                <button
-                    className={"settingsBtn"}
-                    onClick={() => setIsModalOpen(true)}
-                    title="Edit Card"
-                >
-                    <Settings size={20} />
-                </button>
+        <div className={`card ${styles.codeforces}`}>
+            <button
+                className={"settingsBtn"}
+                onClick={() => setIsModalOpen(true)}
+                title="Edit Card"
+            >
+                <Settings size={20} />
+            </button>
 
-                <div className={"header"}>
-                    <div className={"iconWrapper"}>
-                        <Terminal size={20} />
-                    </div>
-                    <div className={styles.platform}>Codeforces</div>
+            <div className={"header"}>
+                <div className={"iconWrapper"}>
+                    <Terminal size={20} />
                 </div>
-
-                <div className={"mainInfo"}>
-
-                    <div className={"ratingWrapper"}>
-                        <span className={styles.rank}>{loading ? '...' : stats.rank}</span>
-                        <div>
-                            <span className={"currentRating"}>{loading ? '...' : stats.currentRating}</span>
-                            <span className={"currentLabel"}>Current</span>
-                        </div>
-
-                    </div>
-                    <div className={"nextRankWrapper"}>
-                        <div className={styles.nextRank}>
-                            <span>next </span>
-                            <span>{stats.nextRank}</span>
-                        </div>
-                        <div className={styles.progressBar}>
-                            <div className={styles.progress} style={{width: `${stats.width}%`}}></div>
-                        </div>
-                        <div style={{ fontSize: ".8rem" }}>
-                            {stats.diff} pts for next rank
-                        </div>
-
-
-                    </div>
-                </div>
-
-                <div className={"stats"}>
-                    <div className={"statRow"}>
-                        <span>Max Rating</span>
-                        <span className={"statValue"}>{loading ? '...' : stats.maxRating}</span>
-                    </div>
-                    <div className={"statRow"}>
-                        <span>Problems Solved</span>
-                        <span className={"statValue"}>{loading ? '...' : stats.problemsSolved}</span>
-                    </div>
-                    <div className={"statRow"}>
-                        <span>Last Active</span>
-                        <span className={"statValue"}>{loading ? '...' : stats.lastActive}</span>
-                    </div>
-                </div>
-                {isModalOpen && (
-                    <div className={"modalOverlay"}>
-                        <div className={"modal"}>
-                            <div className={"modalHeader"}>
-                                <h3>Edit Settings</h3>
-                                <button className={"closeBtn"} onClick={() => setIsModalOpen(false)}>
-                                    <X size={24} />
-                                </button>
-                            </div>
-
-                            <form onSubmit={handleSave}>
-                                <div className={"formGroup"}>
-                                    <label>Codeforces Handle</label>
-                                    <input
-                                        type="text"
-                                        className={"input"}
-                                        value={tempHandle}
-                                        onChange={(e) => setTempHandle(e.target.value)}
-                                        required
-                                    />
-                                </div>
-
-                                <button type="submit" className={"submitBtn"}>
-                                    Save Changes
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                )}
+                <div className={styles.platform}>Codeforces</div>
             </div>
 
+            <div className={"mainInfo"}>
+                <div className={"ratingWrapper"}>
+                    <span className={styles.rank}>{loading ? '...' : stats.rank}</span>
+                    <div>
+                        <span className={"currentRating"}>{loading ? '...' : stats.currentRating}</span>
+                        <span className={"currentLabel"}>Current</span>
+                    </div>
+                </div>
+                <div className={"nextRankWrapper"}>
+                    <div className={styles.nextRank}>
+                        <span>next </span>
+                        <span>{stats.nextRank}</span>
+                    </div>
+                    <div className={styles.progressBar}>
+                        <div className={styles.progress} style={{ width: `${stats.width}%` }}></div>
+                    </div>
+                    <div style={{ fontSize: ".8rem" }}>
+                        {stats.diff} pts for next rank
+                    </div>
+                </div>
+            </div>
 
+            <div className={"stats"}>
+                <div className={"statRow"}>
+                    <span>Max Rating</span>
+                    <span className={"statValue"}>{loading ? '...' : stats.maxRating}</span>
+                </div>
+                <div className={"statRow"}>
+                    <span>Problems Solved</span>
+                    <span className={"statValue"}>{loading ? '...' : stats.problemsSolved}</span>
+                </div>
+                <div className={"statRow"}>
+                    <span>Last Active</span>
+                    <span className={"statValue"}>{loading ? '...' : stats.lastActive}</span>
+                </div>
+            </div>
+            {isModalOpen && (
+                <div className={"modalOverlay"}>
+                    <div className={"modal"}>
+                        <div className={"modalHeader"}>
+                            <h3>Edit Settings</h3>
+                            <button className={"closeBtn"} onClick={() => setIsModalOpen(false)}>
+                                <X size={24} />
+                            </button>
+                        </div>
+
+                        <form onSubmit={handleSave}>
+                            <div className={"formGroup"}>
+                                <label>Codeforces Handle</label>
+                                <input
+                                    type="text"
+                                    className={"input"}
+                                    value={tempHandle}
+                                    onChange={(e) => setTempHandle(e.target.value)}
+                                    required
+                                />
+                            </div>
+
+                            <button type="submit" className={"submitBtn"}>
+                                Save Changes
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            )}
+        </div>
     );
 }
