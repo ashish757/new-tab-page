@@ -46,9 +46,7 @@
     font-weight: 500;
 }
 
-.codeforces .iconWrapper { color: #38bdf8; }
-.codeforces .rank { color: #38bdf8; }
-.codeforces:hover {
-    border-color: rgba(56, 189, 248, 0.3);
-    box-shadow: 0 20px 40px var(--shadow-hover), 0 0 40px rgba(56, 189, 248, 0.1);
+.github {
+    max-width: none;
+    font-family: "JetBrains Mono", monospace;
 }

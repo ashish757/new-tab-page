@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Settings, X, Terminal } from 'lucide-react';
 import styles from './codeforces.module.css';
+import "./commonCard.css"
 
 interface Props {
     id: string;
@@ -75,7 +76,6 @@ export default function CodeforcesCard({ id, defaultHandle }: Props) {
     };
 
     return (
-        <>
             <div className={`card ${styles.codeforces}`}>
                 <button
                     className={"settingsBtn"}
@@ -93,58 +93,60 @@ export default function CodeforcesCard({ id, defaultHandle }: Props) {
                 </div>
 
                 <div className={"mainInfo"}>
+                    <span className={styles.rank}>{loading ? '...' : stats.rank}</span>
+
                     <div className={styles.ratingWrapper}>
-                        <span className={styles.rank}>{loading ? '...' : stats.rank}</span>
+
                         <span className={styles.currentRating}>{loading ? '...' : stats.currentRating}</span>
                         <span className={styles.currentLabel}>Current</span>
                     </div>
                 </div>
 
-                <div className={styles.stats}>
-                    <div className={styles.statRow}>
+                <div className={"stats"}>
+                    <div className={"statRow"}>
                         <span>Max Rating</span>
-                        <span className={styles.statValue}>{loading ? '...' : stats.maxRating}</span>
+                        <span className={"statValue"}>{loading ? '...' : stats.maxRating}</span>
                     </div>
-                    <div className={styles.statRow}>
+                    <div className={"statRow"}>
                         <span>Problems Solved</span>
-                        <span className={styles.statValue}>{loading ? '...' : stats.problemsSolved}</span>
+                        <span className={"statValue"}>{loading ? '...' : stats.problemsSolved}</span>
                     </div>
-                    <div className={styles.statRow}>
+                    <div className={"statRow"}>
                         <span>Last Active</span>
-                        <span className={styles.statValue}>{loading ? '...' : stats.lastActive}</span>
+                        <span className={"statValue"}>{loading ? '...' : stats.lastActive}</span>
                     </div>
                 </div>
-            </div>
-
-            {isModalOpen && (
-                <div className={"modalOverlay"}>
-                    <div className={"modal"}>
-                        <div className={"modalHeader"}>
-                            <h3>Edit Settings</h3>
-                            <button className={"closeBtn"} onClick={() => setIsModalOpen(false)}>
-                                <X size={24} />
-                            </button>
-                        </div>
-
-                        <form onSubmit={handleSave}>
-                            <div className={"formGroup"}>
-                                <label>Codeforces Handle</label>
-                                <input
-                                    type="text"
-                                    className={"input"}
-                                    value={tempHandle}
-                                    onChange={(e) => setTempHandle(e.target.value)}
-                                    required
-                                />
+                {isModalOpen && (
+                    <div className={"modalOverlay"}>
+                        <div className={"modal"}>
+                            <div className={"modalHeader"}>
+                                <h3>Edit Settings</h3>
+                                <button className={"closeBtn"} onClick={() => setIsModalOpen(false)}>
+                                    <X size={24} />
+                                </button>
                             </div>
 
-                            <button type="submit" className={"submitBtn"}>
-                                Save Changes
-                            </button>
-                        </form>
+                            <form onSubmit={handleSave}>
+                                <div className={"formGroup"}>
+                                    <label>Codeforces Handle</label>
+                                    <input
+                                        type="text"
+                                        className={"input"}
+                                        value={tempHandle}
+                                        onChange={(e) => setTempHandle(e.target.value)}
+                                        required
+                                    />
+                                </div>
+
+                                <button type="submit" className={"submitBtn"}>
+                                    Save Changes
+                                </button>
+                            </form>
+                        </div>
                     </div>
-                </div>
-            )}
-        </>
+                )}
+            </div>
+
+
     );
 }

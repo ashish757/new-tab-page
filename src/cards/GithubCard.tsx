@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Settings, X, GitFork } from 'lucide-react';
 import styles from './github.module.css';
+import "./commonCard.css"
 
 interface Props {
     id: string;
@@ -62,7 +63,6 @@ export default function GithubCard({ id, defaultHandle }: Props) {
     };
 
     return (
-        <>
             <div className={`card ${styles.github}`}>
                 <button
                     className={"settingsBtn"}
@@ -76,7 +76,7 @@ export default function GithubCard({ id, defaultHandle }: Props) {
                     <div className={"iconWrapper"}>
                         <GitFork size={20} />
                     </div>
-                    <span className={styles.rank}>Developer</span>
+                    <span className={"rank"}>Developer</span>
                 </div>
 
                 <div className={"mainInfo"}>
@@ -87,51 +87,51 @@ export default function GithubCard({ id, defaultHandle }: Props) {
                     </div>
                 </div>
 
-                <div className={styles.stats}>
-                    <div className={styles.statRow}>
+                <div className={"stats"}>
+                    <div className={"statRow"}>
                         <span>Public Repos</span>
-                        <span className={styles.statValue}>{loading ? '...' : stats.repos}</span>
+                        <span className={"statValue"}>{loading ? '...' : stats.repos}</span>
                     </div>
-                    <div className={styles.statRow}>
+                    <div className={"statRow"}>
                         <span>Following</span>
-                        <span className={styles.statValue}>{loading ? '...' : stats.following}</span>
+                        <span className={"statValue"}>{loading ? '...' : stats.following}</span>
                     </div>
-                    <div className={styles.statRow}>
+                    <div className={"statRow"}>
                         <span>Last Active</span>
-                        <span className={styles.statValue}>{loading ? '...' : stats.lastActive}</span>
+                        <span className={"statValue"}>{loading ? '...' : stats.lastActive}</span>
                     </div>
                 </div>
-            </div>
-
-            {isModalOpen && (
-                <div className={"modalOverlay"}>
-                    <div className={"modal"}>
-                        <div className={"modalHeader"}>
-                            <h3>Edit Settings</h3>
-                            <button className={"closeBtn"} onClick={() => setIsModalOpen(false)}>
-                                <X size={24} />
-                            </button>
-                        </div>
-
-                        <form onSubmit={handleSave}>
-                            <div className={"formGroup"}>
-                                <label>GitHub Username</label>
-                                <input
-                                    type="text"
-                                    className={"input"}
-                                    value={tempHandle}
-                                    onChange={(e) => setTempHandle(e.target.value)}
-                                    required
-                                />
+                {isModalOpen && (
+                    <div className={"modalOverlay"}>
+                        <div className={"modal"}>
+                            <div className={"modalHeader"}>
+                                <h3>Edit Settings</h3>
+                                <button className={"closeBtn"} onClick={() => setIsModalOpen(false)}>
+                                    <X size={24} />
+                                </button>
                             </div>
 
-                            <button type="submit" className={"submitBtn"}>
-                                Save Changes
-                            </button>
-                        </form>
+                            <form onSubmit={handleSave}>
+                                <div className={"formGroup"}>
+                                    <label>GitHub Username</label>
+                                    <input
+                                        type="text"
+                                        className={"input"}
+                                        value={tempHandle}
+                                        onChange={(e) => setTempHandle(e.target.value)}
+                                        required
+                                    />
+                                </div>
+
+                                <button type="submit" className={"submitBtn"}>
+                                    Save Changes
+                                </button>
+                            </form>
+                        </div>
                     </div>
-                </div>
-            )}
-        </>
+                )}
+            </div>
+
+
     );
 }

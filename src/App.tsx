@@ -55,8 +55,10 @@ export default function App() {
                     </div>
 
                     <div className={styles.grid}>
-                        {settings.cards.codeforces && <CodeforcesCard id="cf-1" defaultHandle="Abnormality" />}
-                        {settings.cards.github && <GithubCard id="gh-1" defaultHandle="ashish757" />}
+                        <div className={styles.mid}>
+                            {settings.cards.codeforces && <CodeforcesCard id="cf-1" defaultHandle="Abnormality" />}
+                            {settings.cards.github && <GithubCard id="gh-1" defaultHandle="ashish757" />}
+                        </div>
                         {settings.cards.shortcuts && <ShortcutsCard />}
                     </div>
                 </div>

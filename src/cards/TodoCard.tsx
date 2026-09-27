@@ -59,11 +59,11 @@ export default function TodoCard({ id }: Props) {
 
     return (
         <div className={`card ${styles.todoCard}`}>
-            <div className={styles.header}>
-                <div className={styles.iconWrapper}>
+            <div className={"header"}>
+                <div className={"iconWrapper"}>
                     <CheckCircle size={20} />
                 </div>
-                <span className={styles.rank}>Tasks</span>
+                <span className={"rank"}>Tasks</span>
             </div>
 
             <form onSubmit={handleAdd} className={styles.todoForm}>
