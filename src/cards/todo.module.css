@@ -1,0 +1,146 @@
+
+.todoForm {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.todoInput {
+    flex: 1;
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-card);
+    color: var(--text-main);
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.todoInput:focus {
+    border-color: var(--accent-primary);
+}
+
+.todoAddBtn {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    color: var(--text-main);
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.todoAddBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.todoAddBtn:not(:disabled):hover {
+    background: var(--bg-hover);
+    border-color: var(--accent-hover);
+}
+
+.todoAddBtn:active {
+    transform: scale(0.96);
+}
+
+.todoList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.todoList::-webkit-scrollbar {
+    width: 4px;
+}
+
+.todoList::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+}
+
+.todoItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 10px 12px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.todoItem.completed {
+    opacity: 0.5;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.checkBtn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.todoItem.completed .checkBtn {
+    color: var(--status-success);
+}
+
+.todoText {
+    flex: 1;
+    font-size: 0.9rem;
+    color: var(--text-main);
+    transition: all 0.3s;
+}
+
+.todoItem.completed .todoText {
+    text-decoration: line-through;
+    color: var(--text-muted);
+}
+
+.deleteTodoBtn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 4px;
+    opacity: 0;
+    transition: all 0.2s;
+}
+
+.todoItem:hover .deleteTodoBtn {
+    opacity: 1;
+}
+
+.deleteTodoBtn:hover {
+    color: var(--status-error);
+}
+
+.emptyState {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 20px 0;
+}
+.todoCard {
+    height: 100%;
+}
+
+.todoCard .iconWrapper { color: #818cf8; }
+.todoCard .rank { color: #818cf8; }
+.todoCard:hover {
+    border-color: rgba(129, 140, 248, 0.3);
+    box-shadow: 0 20px 40px var(--shadow-hover), 0 0 40px rgba(129, 140, 248, 0.1);
+}

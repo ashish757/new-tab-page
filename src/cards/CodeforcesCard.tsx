@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Settings, X, Terminal } from 'lucide-react';
-import styles from './card.module.css';
+import styles from './codeforces.module.css';
 
 interface Props {
     id: string;
@@ -76,25 +76,25 @@ export default function CodeforcesCard({ id, defaultHandle }: Props) {
 
     return (
         <>
-            <div className={`${styles.card} ${styles.codeforces}`}>
+            <div className={`card ${styles.codeforces}`}>
                 <button
-                    className={styles.settingsBtn}
+                    className={"settingsBtn"}
                     onClick={() => setIsModalOpen(true)}
                     title="Edit Card"
                 >
                     <Settings size={20} />
                 </button>
 
-                <div className={styles.header}>
-                    <div className={styles.iconWrapper}>
+                <div className={"header"}>
+                    <div className={"iconWrapper"}>
                         <Terminal size={20} />
                     </div>
-                    <span className={styles.rank}>{loading ? '...' : stats.rank}</span>
+                    <div className={styles.platform}>Codeforces</div>
                 </div>
 
-                <div className={styles.mainInfo}>
-                    <div className={styles.platform}>Codeforces</div>
+                <div className={"mainInfo"}>
                     <div className={styles.ratingWrapper}>
+                        <span className={styles.rank}>{loading ? '...' : stats.rank}</span>
                         <span className={styles.currentRating}>{loading ? '...' : stats.currentRating}</span>
                         <span className={styles.currentLabel}>Current</span>
                     </div>
@@ -117,28 +117,28 @@ export default function CodeforcesCard({ id, defaultHandle }: Props) {
             </div>
 
             {isModalOpen && (
-                <div className={styles.modalOverlay}>
-                    <div className={styles.modal}>
-                        <div className={styles.modalHeader}>
+                <div className={"modalOverlay"}>
+                    <div className={"modal"}>
+                        <div className={"modalHeader"}>
                             <h3>Edit Settings</h3>
-                            <button className={styles.closeBtn} onClick={() => setIsModalOpen(false)}>
+                            <button className={"closeBtn"} onClick={() => setIsModalOpen(false)}>
                                 <X size={24} />
                             </button>
                         </div>
 
                         <form onSubmit={handleSave}>
-                            <div className={styles.formGroup}>
+                            <div className={"formGroup"}>
                                 <label>Codeforces Handle</label>
                                 <input
                                     type="text"
-                                    className={styles.input}
+                                    className={"input"}
                                     value={tempHandle}
                                     onChange={(e) => setTempHandle(e.target.value)}
                                     required
                                 />
                             </div>
 
-                            <button type="submit" className={styles.submitBtn}>
+                            <button type="submit" className={"submitBtn"}>
                                 Save Changes
                             </button>
                         </form>

@@ -54,9 +54,9 @@ export default function ShortcutsCard() {
 
     return (
         <>
-            <div className={styles.card}>
+            <div className={"card"}>
                 <button
-                    className={styles.settingsBtn}
+                    className={"settingsBtn"}
                     onClick={() => setIsModalOpen(true)}
                     title="Manage Shortcuts"
                 >
@@ -116,31 +116,31 @@ export default function ShortcutsCard() {
                             ))}
                         </div>
 
-                        <div className={styles.divider}></div>
+                        <div className={"divider"}></div>
 
                         <form onSubmit={handleAddShortcut} className={styles.addForm}>
                             <h4 className={styles.formTitle}>Add New Shortcut</h4>
                             <div className={styles.formGroup}>
                                 <input
                                     type="text"
-                                    className={styles.input}
+                                    className={"input"}
                                     placeholder="Title (e.g., Gmail)"
                                     value={newTitle}
                                     onChange={(e) => setNewTitle(e.target.value)}
                                     required
                                 />
                             </div>
-                            <div className={styles.formGroup}>
+                            <div className={"formGroup"}>
                                 <input
                                     type="text"
-                                    className={styles.input}
+                                    className={"input"}
                                     placeholder="URL (e.g., mail.google.com)"
                                     value={newUrl}
                                     onChange={(e) => setNewUrl(e.target.value)}
                                     required
                                 />
                             </div>
-                            <button type="submit" className={styles.submitBtn}>
+                            <button type="submit" className={"submitBtn"}>
                                 <Plus size={18} /> Add Link
                             </button>
                         </form>

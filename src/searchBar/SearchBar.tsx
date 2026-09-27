@@ -60,7 +60,7 @@ const SearchBar = () => {
                     <input
                         ref={inputRef}
                         type="text"
-                        placeholder="What are you looking for?"
+                        placeholder="What are you looking for? (press / to focus)"
                         name="search"
                         value={query}
                         onChange={(e) => setQuery(e.target.value)}

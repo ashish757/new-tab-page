@@ -1,0 +1,54 @@
+.github .iconWrapper { color: var(--text-main); }
+.github .rank { color: var(--text-main); }
+.github:hover {
+    border-color: var(--border-color);
+    box-shadow: 0 20px 40px var(--shadow-hover), 0 0 40px var(--border-color);
+}
+
+
+.platform {
+    font-size: 1.1rem;
+    color: var(--text-main);
+}
+
+.ratingWrapper {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.currentRating {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.currentLabel {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.stats {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.statRow {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.statValue {
+    color: var(--text-main);
+    font-weight: 500;
+}
+
+.codeforces .iconWrapper { color: #38bdf8; }
+.codeforces .rank { color: #38bdf8; }
+.codeforces:hover {
+    border-color: rgba(56, 189, 248, 0.3);
+    box-shadow: 0 20px 40px var(--shadow-hover), 0 0 40px rgba(56, 189, 248, 0.1);
+}

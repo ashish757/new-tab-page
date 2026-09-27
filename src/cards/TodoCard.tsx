@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { CheckCircle, Plus, Trash2, Check, Square } from 'lucide-react';
-import styles from './card.module.css';
+import styles from './todo.module.css';
 
 interface Todo {
     id: string;
@@ -50,7 +50,6 @@ export default function TodoCard({ id }: Props) {
         setTodos(todos.filter(todo => todo.id !== todoId));
     };
 
-    // Sort: Incomplete first, then completed. Secondary sort by creation time (newest first)
     const sortedTodos = [...todos].sort((a, b) => {
         if (a.completed === b.completed) {
             return b.createdAt - a.createdAt;
@@ -59,7 +58,7 @@ export default function TodoCard({ id }: Props) {
     });
 
     return (
-        <div className={`${styles.card} ${styles.todoCard}`}>
+        <div className={`card ${styles.todoCard}`}>
             <div className={styles.header}>
                 <div className={styles.iconWrapper}>
                     <CheckCircle size={20} />

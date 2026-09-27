@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Settings, X, GitFork } from 'lucide-react';
-import styles from './card.module.css';
+import styles from './github.module.css';
 
 interface Props {
     id: string;
@@ -63,23 +63,23 @@ export default function GithubCard({ id, defaultHandle }: Props) {
 
     return (
         <>
-            <div className={`${styles.card} ${styles.github}`}>
+            <div className={`card ${styles.github}`}>
                 <button
-                    className={styles.settingsBtn}
+                    className={"settingsBtn"}
                     onClick={() => setIsModalOpen(true)}
                     title="Edit Card"
                 >
                     <Settings size={20} />
                 </button>
 
-                <div className={styles.header}>
-                    <div className={styles.iconWrapper}>
+                <div className={"header"}>
+                    <div className={"iconWrapper"}>
                         <GitFork size={20} />
                     </div>
                     <span className={styles.rank}>Developer</span>
                 </div>
 
-                <div className={styles.mainInfo}>
+                <div className={"mainInfo"}>
                     <div className={styles.platform}>GitHub</div>
                     <div className={styles.ratingWrapper}>
                         <span className={styles.currentRating}>{loading ? '...' : stats.followers}</span>
@@ -104,28 +104,28 @@ export default function GithubCard({ id, defaultHandle }: Props) {
             </div>
 
             {isModalOpen && (
-                <div className={styles.modalOverlay}>
-                    <div className={styles.modal}>
-                        <div className={styles.modalHeader}>
+                <div className={"modalOverlay"}>
+                    <div className={"modal"}>
+                        <div className={"modalHeader"}>
                             <h3>Edit Settings</h3>
-                            <button className={styles.closeBtn} onClick={() => setIsModalOpen(false)}>
+                            <button className={"closeBtn"} onClick={() => setIsModalOpen(false)}>
                                 <X size={24} />
                             </button>
                         </div>
 
                         <form onSubmit={handleSave}>
-                            <div className={styles.formGroup}>
+                            <div className={"formGroup"}>
                                 <label>GitHub Username</label>
                                 <input
                                     type="text"
-                                    className={styles.input}
+                                    className={"input"}
                                     value={tempHandle}
                                     onChange={(e) => setTempHandle(e.target.value)}
                                     required
                                 />
                             </div>
 
-                            <button type="submit" className={styles.submitBtn}>
+                            <button type="submit" className={"submitBtn"}>
                                 Save Changes
                             </button>
                         </form>
