@@ -11,7 +11,7 @@ import styles from './app.module.css';
 
 const DEFAULT_SETTINGS: DashboardSettings = {
     bgType: 'image',
-    bgValue: '#0f172a',
+    bgValue: 'https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?q=80&w=2342&auto=format&fit=crop',
     theme: 'dark',
     cards: {
         codeforces: true,
