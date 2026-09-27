@@ -33,7 +33,7 @@ export default function GithubCard({ id, defaultHandle }: Props) {
         try {
             const [profileRes, eventsRes, reposRes] = await Promise.all([
                 fetch(`https://api.github.com/users/${currentHandle}`),
-                fetch(`https://api.github.com/users/${currentHandle}/events/public?per_page=15`),
+                fetch(`https://api.github.com/users/${currentHandle}/events/public?per_page=100`),
                 fetch(`https://api.github.com/users/${currentHandle}/repos?per_page=100&sort=pushed`)
             ]);
 
@@ -67,7 +67,10 @@ export default function GithubCard({ id, defaultHandle }: Props) {
             }
 
                 if (eventsRes.ok) {
+
                     const events = await eventsRes.json();
+
+                    console.log(events);
 
                     const lastPush = events.find((e: any) => e.type === 'PushEvent');
                     if (lastPush) {
@@ -84,7 +87,8 @@ export default function GithubCard({ id, defaultHandle }: Props) {
                         if (e.type === 'PushEvent') {
                             const eventDate = new Date(e.created_at);
                             if (eventDate >= oneWeekAgo) {
-                                commits += e.payload.commits.length;
+                                const pushSize = e.payload?.size ?? e.payload?.commits?.length ?? 1;
+                                commits += pushSize;
                             }
                         }
                     });

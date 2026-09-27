@@ -22,7 +22,8 @@ export default function CodeforcesCard({ id, defaultHandle }: Props) {
         problemsSolved: '-',
         lastActive: '-',
         nextRank: '-',
-        width: 0
+        width: 0,
+        diff: 0
     });
 
 
@@ -45,7 +46,7 @@ export default function CodeforcesCard({ id, defaultHandle }: Props) {
         if (!currentHandle) return;
         setLoading(true);
 
-        const newStats = { rank: '-', currentRating: '-', maxRating: '-', problemsSolved: '-', lastActive: '-' };
+        const newStats = { rank: '-', currentRating: '-', maxRating: '-', problemsSolved: '-', lastActive: '-', diff: 0 };
 
         try {
             const infoReq = await fetch(`https://codeforces.com/api/user.info?handles=${currentHandle}`);
@@ -84,6 +85,8 @@ export default function CodeforcesCard({ id, defaultHandle }: Props) {
         const nextRank = ranks[nextRankIdx].rank;
         const diff = ranks[nextRankIdx].start - Number(newStats.currentRating);
         const range = ranks[nextRankIdx].start - ranks[nextRankIdx-1].start;
+
+        newStats.diff = diff;
 
         setStats({...newStats, nextRank, width: diff*100/range});
 
@@ -137,6 +140,9 @@ export default function CodeforcesCard({ id, defaultHandle }: Props) {
                         </div>
                         <div className={styles.progressBar}>
                             <div className={styles.progress} style={{width: `${stats.width}%`}}></div>
+                        </div>
+                        <div style={{ fontSize: ".8rem" }}>
+                            {stats.diff} pts for next rank
                         </div>
 
 
