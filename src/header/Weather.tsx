@@ -1,17 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Cloud, Sun, CloudRain, Loader2 } from 'lucide-react';
-import styles from './dateTimeWeather.module.css';
+import styles from './header.module.css';
 
-export default function DateTimeWeather() {
-    const [time, setTime] = useState(new Date());
+export default function Weather() {
     const [weather, setWeather] = useState<{ temp: number; code: number } | null>(null);
     const [loading, setLoading] = useState(true);
     const [geoError, setGeoError] = useState(false);
-
-    useEffect(() => {
-        const timer = setInterval(() => setTime(new Date()), 1000);
-        return () => clearInterval(timer);
-    }, []);
 
     useEffect(() => {
         const fetchWeather = async (lat: number, lon: number) => {
@@ -48,36 +42,27 @@ export default function DateTimeWeather() {
         }
     }, []);
 
-    const formattedTime = time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    const formattedDate = time.toLocaleDateString([], { weekday: 'long', month: 'long', day: 'numeric' });
 
     const getWeatherIcon = (code: number) => {
-        if (code === 0 || code === 1) return <Sun size={28} className={styles.iconSun} />;
-        if (code >= 50 && code <= 69) return <CloudRain size={28} className={styles.iconRain} />;
-        return <Cloud size={28} className={styles.iconCloud} />;
+        if (code === 0 || code === 1) return <Sun size={120} className={styles.iconSun} />;
+        if (code >= 50 && code <= 69) return <CloudRain size={120} className={styles.iconRain} />;
+        return <Cloud size={120} className={styles.iconCloud} />;
     };
 
     return (
-        <div className={styles.container}>
-            <div className={styles.dateTime}>
-                <div className={styles.time}>{formattedTime}</div>
-                <div className={styles.date}>{formattedDate}</div>
-            </div>
-
             <div className={styles.weather}>
                 {loading ? (
-                    <Loader2 size={24} className={styles.spinner} />
+                    <Loader2 size={64} className={styles.spinner} />
                 ) : geoError ? (
-                    <span className={styles.temp} title="Location access denied">--°C</span>
+                    <span className={styles.temp} title="Location access denied">--°</span>
                 ) : weather ? (
                     <>
                         {getWeatherIcon(weather.code)}
-                        <span className={styles.temp}>{weather.temp}°C</span>
+                        <span className={styles.temp}>{weather.temp}°</span>
                     </>
                 ) : (
-                    <span className={styles.temp}>--°C</span>
+                    <span className={styles.temp}>--°</span>
                 )}
             </div>
-        </div>
     );
 }
