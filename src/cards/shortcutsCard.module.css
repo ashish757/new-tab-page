@@ -15,7 +15,7 @@
     right: 0;
     background: transparent;
     border: none;
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.7);
     cursor: pointer;
     opacity: 0.4;
     transition: opacity 0.2s, color 0.2s;
@@ -28,7 +28,7 @@
 }
 
 .settingsBtn:hover {
-    color: var(--text-main);
+    color: #ffffff;
 }
 
 .iconGrid {
@@ -45,27 +45,37 @@
     align-items: center;
     gap: 8px;
     text-decoration: none;
-    color: var(--text-muted);
-    transition: transform 0.2s ease, color 0.2s ease;
+    color: #ffffff;
+    opacity: 0.9;
+    transition: transform 0.2s ease, opacity 0.2s ease;
     cursor: pointer;
 }
 
+.gridItem:hover {
+    opacity: 1;
+    transform: translateY(-4px);
+}
 
 .iconCircle {
     width: 52px;
     height: 52px;
     border-radius: 16px;
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-color);
+    background-color: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 12px var(--shadow-base);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
 }
 
+.gridItem:hover .iconCircle {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
 
 .favicon {
     width: 26px;
@@ -86,7 +96,7 @@
 
 .emptyState {
     grid-column: 1 / -1;
-    color: var(--text-muted);
+    color: #ffffff;
     font-size: 0.9rem;
     text-align: center;
     padding: 20px 0;

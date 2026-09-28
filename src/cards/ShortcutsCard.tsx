@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Settings, X, Plus, Trash2 } from 'lucide-react';
 import styles from './shortcutsCard.module.css';
-import "./commonCard.css"; // Keep for modal styles if needed
+import "./commonCard.css";
 
 interface Shortcut {
     id: string;
@@ -75,7 +75,6 @@ export default function ShortcutsCard() {
                                 className={styles.gridItem}
                             >
                                 <div className={styles.iconCircle}>
-                                    {/* Automatically fetches the website's favicon */}
                                     <img
                                         src={`https://www.google.com/s2/favicons?domain=${shortcut.url}&sz=64`}
                                         alt={shortcut.title}
@@ -89,7 +88,6 @@ export default function ShortcutsCard() {
                 </div>
             </div>
 
-            {/* Modal code remains exactly the same below */}
             {isModalOpen && (
                 <div className={"modalOverlay"}>
                     <div className={"modal"}>

@@ -5,7 +5,6 @@
     width: 100%;
     max-width: 640px;
     margin: 0 auto 24px auto;
-    color: var(--text-main);
     padding: 0 16px;
 }
 
@@ -16,17 +15,18 @@
 }
 
 .time {
-    text-shadow: 0 0 75px var(--text-shadow);
+    text-shadow: 0 0 40px rgba(255, 255, 255, 0.5);
     font-size: 3.5rem;
     font-weight: 700;
     line-height: 1;
     letter-spacing: -1.5px;
-    color: var(--text-main);
+    color: #ffffff;
 }
 
 .date {
     font-size: 1.1rem;
-    color: var(--text-muted);
+    color: #ffffff;
+    opacity: 0.9;
     font-weight: 500;
 }
 
@@ -34,35 +34,35 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    background: var(--bg-card);
+    background: rgba(255, 255, 255, 0.35);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     padding: 12px 20px;
     border-radius: 24px;
-    border: 1px solid var(--border-color);
-    box-shadow: 0 8px 32px var(--shadow-base);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
 }
 
 .weather:hover {
-    background: var(--bg-hover);
+    background: rgba(255, 255, 255, 0.6);
     transform: translateY(-2px);
-    box-shadow: 0 12px 40px var(--shadow-hover);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
 }
 
 .temp {
     font-size: 1.5rem;
     font-weight: 600;
-    color: var(--text-main);
+    color: #0f172a;
 }
 
-.iconSun { color: #fbbf24; }
-.iconCloud { color: #94a3b8; }
-.iconRain { color: #60a5fa; }
+.iconSun { color: #f59e0b; }
+.iconCloud { color: #64748b; }
+.iconRain { color: #3b82f6; }
 
 .spinner {
     animation: spin 1s linear infinite;
-    color: var(--text-muted);
+    color: #0f172a;
 }
 
 @keyframes spin {

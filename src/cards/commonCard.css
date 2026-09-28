@@ -1,5 +1,3 @@
-
-
 .mainInfo {
     display: flex;
     gap: 4px;
@@ -18,21 +16,17 @@
         line-height: 1;
     }
 
-
     .currentLabel {
         font-size: 0.8rem;
-        color: var(--text-muted);
+        color: #475569;
     }
+
     .nextRankWrapper{
         display: flex;
         flex-direction: column;
         gap: .7rem;
     }
-
-
 }
-
-
 
 .stats {
     display: flex;
@@ -46,24 +40,15 @@
         padding: .7rem;
         border-radius: .5rem;
         font-size: .7rem;
-        background-color: #111523;
+        background-color: rgba(255, 255, 255, 0.5);
 
         > span:not(.statValue) {
-            color: var(--text-muted);
+            color: #475569;
         }
 
         .statValue {
             font-size: 1.1rem;
             font-weight: 500;
-
         }
-
-
-
     }
 }
-
-
-
-
-

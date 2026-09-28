@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { CheckCircle, Plus, Trash2, Check, Square } from 'lucide-react';
+import { Plus, Trash2, Check, Square } from 'lucide-react';
 import styles from './todo.module.css';
 
 interface Todo {
@@ -60,10 +60,7 @@ export default function TodoCard({ id }: Props) {
     return (
         <div className={`${styles.todoCard}`}>
             <div className={"header"}>
-                <div className={"iconWrapper"}>
-                    <CheckCircle size={20} />
-                </div>
-                <span className={"rank"}>Tasks</span>
+                <span className={"rank"}>TODO</span>
             </div>
 
             <form onSubmit={handleAdd} className={styles.todoForm}>
