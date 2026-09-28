@@ -8,63 +8,29 @@ body {
   font-family: Roboto, sans-serif;
 }
 
-:root {
-  --bg-main: #050505;
-  --bg-card: rgba(15, 23, 42, 0.35);
-  --bg-hover: rgba(30, 41, 59, 0.7);
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
-  --border-color: rgba(255, 255, 255, 0.05);
-  --accent-primary: #3b82f6;
-  --accent-hover: #60a5fa;
-  --status-success: #22c55e;
-  --status-error: #ef4444;
-  --status-warning: #eab308;
-  --shadow-base: rgba(0, 0, 0, 0.2);
-  --shadow-hover: rgba(0, 0, 0, 0.4);
-  --text-shadow: #ffffff;
-}
-
-[data-theme="light"] {
-  --bg-main: #f1f5f9;
-  --bg-card: rgba(255, 255, 255, 0.34);
-  --bg-hover: rgba(255, 255, 255, 0.9);
-  --text-main: #0f172a;
-  --text-muted: #475569;
-  --border-color: rgba(0, 0, 0, 0.05);
-  --accent-primary: #2563eb;
-  --accent-hover: #1d4ed8;
-  --status-success: #16a34a;
-  --status-error: #dc2626;
-  --status-warning: #ca8a04;
-  --shadow-base: rgba(0, 0, 0, 0.05);
-  --shadow-hover: rgba(0, 0, 0, 0.1);
-  --text-shadow: #bdbdbd;
-}
-
 .card {
   position: relative;
   border-radius: 24px;
   padding: 24px;
   display: flex;
   flex-direction: column;
-  color: var(--text-main);
+  color: #0f172a;
   flex: 1 1 300px;
   min-width: 300px;
   max-width: 350px;
   margin: 0 auto;
-  background: var(--bg-card);
-  backdrop-filter: blur(7px);
-  -webkit-backdrop-filter: blur(7px);
-  border: 1px solid var(--border-color);
-  box-shadow: 0 4px 24px var(--shadow-base);
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .card:hover {
-  background: var(--bg-hover);
-  border-color: var(--border-color);
-  box-shadow: 0 20px 40px var(--shadow-hover);
+  background: rgba(255, 255, 255, 0.6);
+  border-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
 }
 
 .settingsBtn {
@@ -73,7 +39,7 @@ body {
   right: 24px;
   background: transparent;
   border: none;
-  color: var(--text-muted);
+  color: #475569;
   cursor: pointer;
   opacity: 0;
   transition: opacity 0.2s, color 0.2s;
@@ -87,7 +53,7 @@ body {
 }
 
 .settingsBtn:hover {
-  color: var(--text-main);
+  color: #0f172a;
 }
 
 .header {
@@ -103,27 +69,11 @@ body {
   justify-content: center;
 }
 
-
 .rank {
   font-weight: 700;
   font-size: 0.85rem;
   letter-spacing: 0.5px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .modalOverlay {
   position: fixed;
@@ -140,14 +90,14 @@ body {
 }
 
 .modal {
-  background-color: var(--bg-main);
+  background-color: #ffffff;
   padding: 24px;
   border-radius: 12px;
   width: 90%;
   max-width: 360px;
-  border: 1px solid var(--border-color);
-  box-shadow: 0 10px 30px var(--shadow-hover);
-  color: var(--text-main);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  color: #0f172a;
 }
 
 .modalHeader {
@@ -165,13 +115,13 @@ body {
 .closeBtn {
   background: transparent;
   border: none;
-  color: var(--text-muted);
+  color: #475569;
   cursor: pointer;
   padding: 0;
 }
 
 .closeBtn:hover {
-  color: var(--status-error);
+  color: #dc2626;
 }
 
 .formGroup {
@@ -182,30 +132,30 @@ body {
 }
 
 .formGroup label {
-  color: var(--text-muted);
+  color: #475569;
   font-size: 0.9rem;
 }
 
 .input, .select {
   padding: 10px 12px;
   border-radius: 8px;
-  border: 1px solid var(--border-color);
-  background-color: var(--bg-card);
-  color: var(--text-main);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: #f8fafc;
+  color: #0f172a;
   font-size: 1rem;
   outline: none;
 }
 
 .input:focus, .select:focus {
-  border-color: var(--accent-primary);
+  border-color: #2563eb;
 }
 
 .submitBtn {
   width: 100%;
   padding: 12px;
-  background-color: var(--bg-card);
-  color: var(--text-main);
-  border: 1px solid var(--border-color);
+  background-color: #f1f5f9;
+  color: #0f172a;
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 12px;
   cursor: pointer;
   font-weight: 600;
@@ -214,8 +164,8 @@ body {
 }
 
 .submitBtn:hover {
-  background: var(--bg-hover);
-  border-color: var(--accent-hover);
+  background: #e2e8f0;
+  border-color: #2563eb;
 }
 
 .submitBtn:active {
@@ -224,6 +174,6 @@ body {
 
 .divider {
   height: 1px;
-  background-color: var(--border-color);
+  background-color: rgba(0, 0, 0, 0.1);
   margin: 20px 0;
 }
