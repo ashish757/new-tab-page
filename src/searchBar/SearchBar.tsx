@@ -54,24 +54,28 @@ const SearchBar = () => {
 
     return (
         <div className={styles.wrapper}>
-            <div className={styles.searchBar}>
-                <Search />
-                <form onSubmit={handleSearch} className={styles.searchForm}>
-                    <input
-                        ref={inputRef}
-                        type="text"
-                        placeholder="What are you looking for? (press / to focus)"
-                        name="search"
-                        value={query}
-                        onChange={(e) => setQuery(e.target.value)}
-                    />
-                </form>
-                <div className={styles.dropdown}>
-                    <select value={engine} onChange={(e) => setEngine(e.target.value)}>
-                        <option value="google">Google</option>
-                        <option value="duckduckgo">Duck Duck Go</option>
-                        <option value="bing">Bing</option>
-                    </select>
+            <div className={styles.overlay}></div>
+
+            <div className={styles.searchBarContainer}>
+                <div className={styles.searchBar}>
+                    <Search />
+                    <form onSubmit={handleSearch} className={styles.searchForm}>
+                        <input
+                            ref={inputRef}
+                            type="text"
+                            placeholder="What are you looking for? (press / to focus)"
+                            name="search"
+                            value={query}
+                            onChange={(e) => setQuery(e.target.value)}
+                        />
+                    </form>
+                    <div className={styles.dropdown}>
+                        <select value={engine} onChange={(e) => setEngine(e.target.value)}>
+                            <option value="google">Google</option>
+                            <option value="duckduckgo">Duck Duck Go</option>
+                            <option value="bing">Bing</option>
+                        </select>
+                    </div>
                 </div>
             </div>
         </div>

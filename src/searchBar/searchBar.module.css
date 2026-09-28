@@ -2,29 +2,89 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    position: relative;
+    z-index: 10;
+}
+
+.wrapper:focus-within {
+    z-index: 1000;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s ease;
+}
+
+.wrapper:focus-within .overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.searchBarContainer {
+    position: relative;
+    width: 100%;
+    max-width: 640px;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wrapper:focus-within .searchBarContainer {
+    transform: scale(1.12) translateY(24px);
+}
+
+.searchBarContainer::before {
+    content: "";
+    position: absolute;
+    inset: -12px;
+    border-radius: 20px;
+    background: linear-gradient(60deg, #ee7752, #e73c7e, #23a6d5, #23d5ab, #ee7752);
+    background-size: 300% 300%;
+    animation: ambientGlow 4s linear infinite;
+    filter: blur(28px);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+}
+
+.wrapper:focus-within .searchBarContainer::before {
+    opacity: 1;
+}
+
+@keyframes ambientGlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 .searchBar {
+    position: relative;
     display: flex;
     align-items: center;
     width: 100%;
-    max-width: 640px;
     background: rgba(255, 255, 255, 0.35);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 15px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
     padding: 12px;
-    transition: all 0.3s ease;
     gap: 16px;
     color: #475569;
+    transition: all 0.4s ease;
+    z-index: 1;
 }
 
-.searchBar:focus-within {
-    background: rgba(255, 255, 255, 0.6);
-    border-color: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+.wrapper:focus-within .searchBar {
+    background: rgba(255, 255, 255, 0.95);
+    border-color: transparent;
     color: #0f172a;
 }
 
@@ -53,6 +113,12 @@
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 15px;
     background: rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.wrapper:focus-within .dropdown {
+    border-color: rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.5);
 }
 
 .dropdown select {
@@ -68,6 +134,6 @@
     appearance: none;
 }
 
-.dropdown select:hover {
+.dropdown select:hover, .wrapper:focus-within .dropdown select {
     color: #0f172a;
 }
