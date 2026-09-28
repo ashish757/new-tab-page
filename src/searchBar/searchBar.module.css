@@ -9,23 +9,23 @@
     align-items: center;
     width: 100%;
     max-width: 640px;
-    background: var(--bg-card);
+    background: rgba(255, 255, 255, 0.35);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--border-color);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 15px;
-    box-shadow: 0 8px 32px var(--shadow-base);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
     padding: 12px;
     transition: all 0.3s ease;
     gap: 16px;
-    color: var(--text-muted);
+    color: #475569;
 }
 
 .searchBar:focus-within {
-    background: var(--bg-hover);
-    border-color: var(--border-color);
-    box-shadow: 0 12px 40px var(--shadow-hover);
-    color: var(--text-main);
+    background: rgba(255, 255, 255, 0.6);
+    border-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+    color: #0f172a;
 }
 
 .searchForm {
@@ -37,27 +37,27 @@
     flex: 1;
     background: transparent;
     border: none;
-    color: var(--text-main);
+    color: #0f172a;
     font-size: 1.1rem;
     padding: 4px 0;
     outline: none;
 }
 
 .searchBar input::placeholder {
-    color: var(--text-muted);
+    color: #475569;
 }
 
 .dropdown {
     display: flex;
     align-items: center;
-    border: 1px solid var(--border-color);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 15px;
-    background: var(--border-color);
+    background: rgba(255, 255, 255, 0.3);
 }
 
 .dropdown select {
     background: transparent;
-    color: var(--text-muted);
+    color: #475569;
     border: none;
     padding: 8px;
     outline: none;
@@ -69,5 +69,5 @@
 }
 
 .dropdown select:hover {
-    color: var(--text-main);
+    color: #0f172a;
 }
