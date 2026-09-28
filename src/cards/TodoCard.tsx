@@ -59,9 +59,6 @@ export default function TodoCard({ id }: Props) {
 
     return (
         <div className={`${styles.todoCard}`}>
-            <div className={"header"}>
-                <span className={"rank"}>TODO</span>
-            </div>
 
             <form onSubmit={handleAdd} className={styles.todoForm}>
                 <input
