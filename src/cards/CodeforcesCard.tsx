@@ -55,7 +55,7 @@ export default function CodeforcesCard({ id, defaultHandle }: Props) {
             const status = await statusReq.json();
 
             if (data) {
-                newStats.rank = data.rank ? data.rank.charAt(0).toUpperCase() + data.rank.slice(1) : '-';
+                newStats.rank = data.rank ? data.rank : 'unrated';
                 newStats.currentRating = data.rating || '-';
                 newStats.maxRating = data.maxRating || '-';
 
@@ -69,7 +69,7 @@ export default function CodeforcesCard({ id, defaultHandle }: Props) {
                     newStats.problemsSolved = solvedProblems.size.toString();
 
                     newStats.lastActive = status.result[0]?.creationTimeSeconds
-                        ? new Date(status.result[0].creationTimeSeconds * 1000).toLocaleDateString()
+                        ? new Date(status.result[0].creationTimeSeconds * 1000).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })
                         : '-';
                 }
             }
@@ -125,52 +125,45 @@ export default function CodeforcesCard({ id, defaultHandle }: Props) {
                 onClick={() => setIsModalOpen(true)}
                 title="Edit Card"
             >
-                <Settings size={20} />
+                <Settings size={18} />
             </button>
 
-            <div className={"header"}>
-                <div className={"iconWrapper"}>
-                    <Terminal size={20} />
+            <div className={styles.topSection}>
+                <div className={styles.handleContainer}>
+                    <Terminal size={16} className={styles.terminalIcon} />
+                    <span className={styles.handleName}>{handle}</span>
                 </div>
-                <div className={styles.platform}>Codeforces</div>
-            </div>
 
-            <div className={"mainInfo"}>
-                <div className={"ratingWrapper"}>
-                    <span className={styles.rank}>{loading ? '...' : stats.rank}</span>
-                    <div>
-                        <span className={"currentRating"}>{loading ? '...' : stats.currentRating}</span>
-                        <span className={"currentLabel"}>Current</span>
-                    </div>
+                <div className={styles.ratingGroup}>
+                    <span className={styles.primaryRating}>{loading ? '...' : stats.currentRating}</span>
+                    <span className={styles.rankLabel}>{loading ? '...' : stats.rank}</span>
                 </div>
-                <div className={"nextRankWrapper"}>
-                    <div className={styles.nextRank}>
-                        <span>next </span>
-                        <span>{stats.nextRank}</span>
+
+                <div className={styles.progressSection}>
+                    <div className={styles.progressDetails}>
+                        <span className={styles.diffText}>{stats.diff} to {stats.nextRank.toLowerCase()}</span>
                     </div>
                     <div className={styles.progressBar}>
-                        <div className={styles.progress} style={{ width: `${stats.width}%` }}></div>
-                    </div>
-                    <div style={{ fontSize: ".8rem" }}>
-                        {stats.diff} pts for next rank
+                        <div className={styles.progressFill} style={{ width: `${stats.width}%` }}></div>
                     </div>
                 </div>
             </div>
 
-            <div className={"stats"}>
-                <div className={"statRow"}>
-                    <span>Max Rating</span>
-                    <span className={"statValue"}>{loading ? '...' : stats.maxRating}</span>
+            <div className={styles.bottomStats}>
+                <div className={styles.statBlock}>
+                    <span className={styles.statLabel}>Max</span>
+                    <span className={styles.statValue}>{loading ? '...' : stats.maxRating}</span>
                 </div>
-                <div className={"statRow"}>
-                    <span>Problems Solved</span>
-                    <span className={"statValue"}>{loading ? '...' : stats.problemsSolved}</span>
+                <div className={styles.statBlock}>
+                    <span className={styles.statLabel}>Solved</span>
+                    <span className={styles.statValue}>{loading ? '...' : stats.problemsSolved}</span>
                 </div>
-                <div className={"statRow"}>
-                    <span>Last Active</span>
-                    <span className={"statValue"}>{loading ? '...' : stats.lastActive}</span>
+                <div className={styles.statBlock}>
+                    <span className={styles.statLabel}>Active</span>
+                    <span className={styles.statValue}>{loading ? '...' : stats.lastActive}</span>
                 </div>
             </div>
+
             {isModalOpen && (
                 <div className={"modalOverlay"}>
                     <div className={"modal"}>
@@ -180,7 +173,6 @@ export default function CodeforcesCard({ id, defaultHandle }: Props) {
                                 <X size={24} />
                             </button>
                         </div>
-
                         <form onSubmit={handleSave}>
                             <div className={"formGroup"}>
                                 <label>Codeforces Handle</label>
@@ -192,7 +184,6 @@ export default function CodeforcesCard({ id, defaultHandle }: Props) {
                                     required
                                 />
                             </div>
-
                             <button type="submit" className={"submitBtn"}>
                                 Save Changes
                             </button>

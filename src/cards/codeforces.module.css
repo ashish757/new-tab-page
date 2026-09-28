@@ -1,71 +1,110 @@
 .codeforces {
-    max-width: none;
     font-family: "JetBrains Mono", monospace;
-}
-.platform {
-    font-size: 1.1rem;
-    color: #0f172a;
-}
-
-.currentRating {
-    font-size: 2.5rem;
-    font-weight: 700;
-    line-height: 1;
-}
-
-.currentLabel {
-    font-size: 0.8rem;
-    color: #475569;
-}
-
-.stats {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    justify-content: space-between;
+    padding: 24px;
 }
 
-.statRow {
+.topSection {
     display: flex;
-    justify-content: space-between;
-    font-size: 0.85rem;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.handleContainer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     color: #475569;
 }
 
-.statValue {
-    color: #0f172a;
-    font-weight: 500;
-}
-
-.codeforces .iconWrapper { color: #38bdf8; }
-.codeforces:hover {
-    border-color: rgba(255, 255, 255, 0.8);
-}
-
-.rank, .nextRank span:last-child {
-    border-radius: 4px;
-    border: 1px solid #1097d3;
-    background: rgba(56, 189, 248, 0.2);
-    width: fit-content;
-    padding: 1px 6px;
-    text-transform: uppercase;
-    font-size: 0.8rem;
+.terminalIcon {
     color: #00a9ff;
 }
 
-.nextRank span:first-child {
+.handleName {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.ratingGroup {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-top: 4px;
+}
+
+.primaryRating {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #0f172a;
+    letter-spacing: -1px;
+}
+
+.rankLabel {
+    font-size: 0.85rem;
+    color: #00a9ff;
+    text-transform: capitalize;
+    font-weight: 600;
+}
+
+.progressSection {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.progressDetails {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.diffText {
+    font-size: 0.75rem;
     color: #475569;
 }
 
-.nextRank span:last-child { color: #00a9ff; }
-
 .progressBar {
-    display: flex;
-    height: 5px;
-    border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 3px;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 2px;
+    overflow: hidden;
 }
 
-.progressBar .progress {
+.progressFill {
+    height: 100%;
     background-color: #00a9ff;
-    box-shadow: 2px 0 8px 0 rgba(0, 0, 0, 0.1);
+    transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bottomStats {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px dashed rgba(0, 0, 0, 0.15);
+    padding-top: 16px;
+    margin-top: 24px;
+}
+
+.statBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.statLabel {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #64748b;
+    font-weight: 600;
+}
+
+.statValue {
+    font-size: 1.1rem;
+    color: #0f172a;
+    font-weight: 500;
 }
