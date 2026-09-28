@@ -13,6 +13,12 @@ const DEFAULT_SHORTCUTS: Shortcut[] = [
     { id: '1', title: 'GitHub', url: 'https://github.com' },
     { id: '2', title: 'YouTube', url: 'https://youtube.com' },
     { id: '3', title: 'Codeforces', url: 'https://codeforces.com' },
+    { id: '4', title: 'Slack', url: 'https://app.slack.com' },
+    { id: '5', title: 'LeetCode', url: 'https://leetcode.com' },
+    { id: '6', title: 'CodeChef', url: 'https://www.codechef.com' },
+    { id: '7', title: 'Claude', url: 'https://claude.ai' },
+    { id: '8', title: 'Stardance', url: 'https://stardance.com' }, // Update .com to the correct TLD if needed
+    { id: '9', title: 'Spotify', url: 'https://open.spotify.com' },
 ];
 
 export default function ShortcutsCard() {
