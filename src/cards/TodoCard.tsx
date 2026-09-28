@@ -13,10 +13,31 @@ interface Props {
     id: string;
 }
 
+const DEFAULT_TODOS: Todo[] = [
+    {
+        id: 'default-1',
+        text: 'Push updates to GitHub',
+        completed: true,
+        createdAt: Date.now() - 2000,
+    },
+    {
+        id: 'default-2',
+        text: 'Solve 3 Codeforces problems',
+        completed: false,
+        createdAt: Date.now() - 1000,
+    },
+    {
+        id: 'default-3',
+        text: 'Morning calisthenics and running',
+        completed: false,
+        createdAt: Date.now(),
+    }
+];
+
 export default function TodoCard({ id }: Props) {
     const [todos, setTodos] = useState<Todo[]>(() => {
         const saved = localStorage.getItem(`${id}-todos`);
-        return saved ? JSON.parse(saved) : [];
+        return saved ? JSON.parse(saved) : DEFAULT_TODOS;
     });
 
     const [inputValue, setInputValue] = useState('');
