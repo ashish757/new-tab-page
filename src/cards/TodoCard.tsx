@@ -58,7 +58,7 @@ export default function TodoCard({ id }: Props) {
     });
 
     return (
-        <div className={`card ${styles.todoCard}`}>
+        <div className={`${styles.todoCard}`}>
             <div className={"header"}>
                 <div className={"iconWrapper"}>
                     <CheckCircle size={20} />

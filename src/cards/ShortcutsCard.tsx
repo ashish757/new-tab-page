@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Settings, X, Plus, Trash2, Bookmark, ExternalLink } from 'lucide-react';
+import { Settings, X, Plus, Trash2 } from 'lucide-react';
 import styles from './shortcutsCard.module.css';
+import "./commonCard.css"; // Keep for modal styles if needed
 
 interface Shortcut {
     id: string;
@@ -54,59 +55,60 @@ export default function ShortcutsCard() {
 
     return (
         <>
-            <div className={"card"}>
+            <div className={styles.transparentContainer}>
                 <button
-                    className={"settingsBtn"}
+                    className={styles.settingsBtn}
                     onClick={() => setIsModalOpen(true)}
                     title="Manage Shortcuts"
                 >
                     <Settings size={20} />
                 </button>
 
-                <div className={styles.header}>
-                    <div className={styles.iconWrapper}>
-                        <Bookmark size={20} />
-                    </div>
-                    <span className={styles.title}>Quick Links</span>
-                </div>
-
-                <div className={styles.shortcutsGrid}>
+                <div className={styles.iconGrid}>
                     {shortcuts.length === 0 ? (
-                        <div className={styles.emptyState}>No shortcuts added yet.</div>
+                        <div className={styles.emptyState}>No shortcuts added.</div>
                     ) : (
                         shortcuts.map((shortcut) => (
                             <a
                                 key={shortcut.id}
                                 href={shortcut.url}
-                                className={styles.shortcutItem}
+                                className={styles.gridItem}
                             >
-                                <span className={styles.shortcutTitle}>{shortcut.title}</span>
-                                <ExternalLink size={14} className={styles.shortcutIcon} />
+                                <div className={styles.iconCircle}>
+                                    {/* Automatically fetches the website's favicon */}
+                                    <img
+                                        src={`https://www.google.com/s2/favicons?domain=${shortcut.url}&sz=64`}
+                                        alt={shortcut.title}
+                                        className={styles.favicon}
+                                    />
+                                </div>
+                                <span className={styles.gridTitle}>{shortcut.title}</span>
                             </a>
                         ))
                     )}
                 </div>
             </div>
 
+            {/* Modal code remains exactly the same below */}
             {isModalOpen && (
-                <div className={styles.modalOverlay}>
-                    <div className={styles.modal}>
-                        <div className={styles.modalHeader}>
+                <div className={"modalOverlay"}>
+                    <div className={"modal"}>
+                        <div className={"modalHeader"}>
                             <h3>Manage Shortcuts</h3>
-                            <button className={styles.closeBtn} onClick={() => setIsModalOpen(false)}>
+                            <button className={"closeBtn"} onClick={() => setIsModalOpen(false)}>
                                 <X size={24} />
                             </button>
                         </div>
 
-                        <div className={styles.manageList}>
+                        <div className={"manageList"}>
                             {shortcuts.map((shortcut) => (
-                                <div key={shortcut.id} className={styles.manageItem}>
-                                    <div className={styles.manageInfo}>
-                                        <span className={styles.manageTitle}>{shortcut.title}</span>
-                                        <span className={styles.manageUrl}>{shortcut.url}</span>
+                                <div key={shortcut.id} className={"manageItem"}>
+                                    <div className={"manageInfo"}>
+                                        <span className={"manageTitle"}>{shortcut.title}</span>
+                                        <span className={"manageUrl"}>{shortcut.url}</span>
                                     </div>
                                     <button
-                                        className={styles.deleteBtn}
+                                        className={"deleteBtn"}
                                         onClick={() => handleDeleteShortcut(shortcut.id)}
                                         title="Remove"
                                     >
@@ -118,9 +120,9 @@ export default function ShortcutsCard() {
 
                         <div className={"divider"}></div>
 
-                        <form onSubmit={handleAddShortcut} className={styles.addForm}>
-                            <h4 className={styles.formTitle}>Add New Shortcut</h4>
-                            <div className={styles.formGroup}>
+                        <form onSubmit={handleAddShortcut} className={"addForm"}>
+                            <h4 className={"formTitle"}>Add New Shortcut</h4>
+                            <div className={"formGroup"}>
                                 <input
                                     type="text"
                                     className={"input"}

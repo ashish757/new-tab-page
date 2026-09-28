@@ -1,4 +1,6 @@
-
+.todoCard {
+    padding: 1rem;
+}
 .todoForm {
     display: flex;
     gap: 8px;
